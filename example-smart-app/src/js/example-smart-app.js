@@ -82,7 +82,7 @@
       birthdate: {value: ''},
       height: {value: ''},
       systolicbp: {value: ''},
-      //diastolicbp: {value: ''},
+      diastolicbp: {value: ''},
       ldl: {value: ''},
       hdl: {value: ''},
       trig: {value: ''},
@@ -125,8 +125,8 @@
     $('#gender').html(p.gender);
     $('#birthdate').html(p.birthdate);
     $('#height').html(p.height);
-    $('#systolicbp').html(p.systolicbp);
-    $('#diastolicbp').html(p.diastolicbp);
+    //$('#systolicbp').html(p.systolicbp);
+    //$('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
     $('#trig').html(p.trig);
