@@ -82,7 +82,7 @@
       birthdate: {value: ''},
       height: {value: ''},
       systolicbp: {value: ''},
-      diastolicbp: {value: ''},
+      //diastolicbp: {value: ''},
       ldl: {value: ''},
       hdl: {value: ''},
       trig: {value: ''},
