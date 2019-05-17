@@ -49,7 +49,7 @@
           p.fname = fname;
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
-          p.trig = getQuantityValueAndUnit(trig[0]);
+          p.trig = getQuantityValueAndUnit(trig);
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
