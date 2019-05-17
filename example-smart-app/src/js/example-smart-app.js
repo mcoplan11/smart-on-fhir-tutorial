@@ -42,6 +42,7 @@
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
           var trig = byCodes('3043-7');
+          var a = 
 
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
@@ -57,6 +58,14 @@
           if (typeof diastolicbp != 'undefined') {
             p.diastolicbp = diastolicbp;
           }
+          
+          if(typeof hdl[0] != 'undefined' && typeof hdl[0].valueQuantity.value != 'undefined' && typeof hdl[0].valueQuantity.unit != 'undefined') {
+        p.hdl = hdl[0].valueQuantity.value + ' ' + hdl[0].valueQuantity.unit;
+      }
+
+      if(typeof ldl[0] != 'undefined' && typeof ldl[0].valueQuantity.value != 'undefined' && typeof ldl[0].valueQuantity.unit != 'undefined') {
+        p.ldl = ldl[0].valueQuantity.value + ' ' + ldl[0].valueQuantity.unit;
+      }
 
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
