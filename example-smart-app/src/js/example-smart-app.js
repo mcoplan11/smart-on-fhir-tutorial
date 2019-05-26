@@ -17,7 +17,9 @@
                       code: {
                         $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',
                               'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
-                              'http://loinc.org|2089-1', 'http://loinc.org|55284-4', 'http://loinc.org|3043-7']
+                              'http://loinc.org|2089-1', 'http://loinc.org|55284-4', 
+                              'http://loinc.org|3043-7',
+                              'http://loinc.org|86911-5', 'http://loinc.org|86910-7']
                       }
                     }
                   });
@@ -42,7 +44,9 @@
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
           var trig = byCodes('3043-7');
-
+          var chol = byCodes('86911-5');
+          var hemog = byCodes('86910-7');
+          
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
           p.gender = gender;
@@ -50,6 +54,11 @@
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
           p.trig = getQuantityValueAndUnit(trig);
+          p.hdl = getQuantityValueAndUnit(hdl[0]);
+          p.ldl = getQuantityValueAndUnit(ldl[0]);
+          p.chol = getQuantityValueAndUnit(chol[0]);
+          p.hemog = getQuantityValueAndUnit(hemog[0]);
+
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
@@ -58,11 +67,8 @@
           if (typeof diastolicbp != 'undefined') {
             p.diastolicbp = diastolicbp;
           }
-
-          p.hdl = getQuantityValueAndUnit(hdl[0]);
-          p.ldl = getQuantityValueAndUnit(ldl[0]);
           
-
+          
           ret.resolve(p);
         });
       } else {
@@ -87,6 +93,8 @@
       ldl: {value: ''},
       hdl: {value: ''},
       trig: {value: ''},
+      chol: {value: ''},
+      hemog: {value: ''},
     };
   }
 
@@ -131,6 +139,9 @@
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
     $('#trig').html(p.trig);
+    $('#chol').html(p.chol);
+    $('#hemog').html(p.hemog);
+    
   };
 
 })(window);
