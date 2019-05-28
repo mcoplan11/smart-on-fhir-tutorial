@@ -8,10 +8,10 @@
     }
 
     function onReady(smart)  {
-      if (smart.hasOwnProperty('patient')) {
-      var patient = smart.patient;
-      var pt = patient.read();
-      var obv = smart.patient.api.fetchAll({
+  if (smart.hasOwnProperty('patient')) {
+    var patient = smart.patient;
+    var pt = patient.read();
+    var obv = smart.patient.api.fetchAll({
                   type: 'Observation',
                   query: {
                     code: {
@@ -22,23 +22,23 @@
                          }
                 });
 
-     $.when(pt, obv).fail(onError);
+    $.when(pt, obv).fail(onError);
 
-     $.when(pt, obv).done(function(patient, obv) {
-       var byCodes = smart.byCodes(obv, 'code');
-       var gender = patient.gender;
-       var dob = new Date(patient.birthDate);
-       var day = dob.getDate();
-       var monthIndex = dob.getMonth() + 1;
-       var year = dob.getFullYear();
+    $.when(pt, obv).done(function(patient, obv) {
+      var byCodes = smart.byCodes(obv, 'code');
+      var gender = patient.gender;
+      var dob = new Date(patient.birthDate);
+      var day = dob.getDate();
+      var monthIndex = dob.getMonth() + 1;
+      var year = dob.getFullYear();
 
-       var dobStr = monthIndex + '/' + day + '/' + year;
-       var fname = '';
-       var lname = '';
+      var dobStr = monthIndex + '/' + day + '/' + year;
+      var fname = '';
+      var lname = '';
 
-       if(typeof patient.name[0] !== 'undefined') {
-         fname = patient.name[0].given.join(' ');
-         lname = patient.name[0].family.join(' ');
+      if(typeof patient.name[0] !== 'undefined') {
+        fname = patient.name[0].given.join(' ');
+        lname = patient.name[0].family.join(' ');
       }
 
       var height = byCodes('8302-2');
@@ -79,7 +79,6 @@
     onError();
   }
 }
-
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
 
