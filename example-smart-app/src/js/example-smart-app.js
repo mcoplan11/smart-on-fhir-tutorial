@@ -19,7 +19,7 @@
                               'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
                               'http://loinc.org|2089-1', 'http://loinc.org|55284-4', 
                               'http://loinc.org|3043-7', 
-                              'http://loinc.org|86911-5', 'http://loinc.org|86910-7']
+                              'http://loinc.org|58293-2', 'http://loinc.org|86910-7']
                       }
                     }
                   });
@@ -44,7 +44,7 @@
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
           var trig = byCodes('3043-7');
-          var chol = byCodes('86911-5');
+          var chol = byCodes('58293-2');
           var hemog = byCodes('86910-7');
 
           var p = defaultPatient();
