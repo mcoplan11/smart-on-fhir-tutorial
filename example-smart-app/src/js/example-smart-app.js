@@ -58,10 +58,6 @@
           p.chol = getQuantityValueAndUnit(chol[0]);
           p.hemog = getQuantityValueAndUnit(hemog[0]);
 
-          if (typeof systolicbp != 'undefined')  {
-            p.systolicbp = systolicbp;
-          }
-
           if (typeof diastolicbp != 'undefined') {
             p.diastolicbp = diastolicbp;
           }
