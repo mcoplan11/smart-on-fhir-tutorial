@@ -43,26 +43,37 @@
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
-          var trig = byCodes('3043-7');
-          var chol = byCodes('58293-2');
-          var hemog = byCodes('86910-7');
 
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
           p.gender = gender;
           p.fname = fname;
           p.lname = lname;
-          p.height = getQuantityValueAndUnit(height[0]);
-          p.trig = getQuantityValueAndUnit(trig);
-          p.hdl = getQuantityValueAndUnit(hdl[0]);
-          p.ldl = getQuantityValueAndUnit(ldl[0]);
-          p.chol = getQuantityValueAndUnit(chol[0]);
-          p.hemog = getQuantityValueAndUnit(hemog[0]);
-    
+          
+          if(typeof height[0] != 'undefined' && typeof height[0].valueQuantity.value != 'undefined' && typeof height[0].valueQuantity.unit != 'undefined') {
+          p.height = height[0].valueQuantity.value + ' ' + height[0].valueQuantity.unit;
+        }
+
+        if(typeof systolicbp != 'undefined')  {
+          p.systolicbp = systolicbp;
+        }
+
+        if(typeof diastolicbp != 'undefined') {
+          p.diastolicbp = diastolicbp;
+        }
+
+        if(typeof hdl[0] != 'undefined' && typeof hdl[0].valueQuantity.value != 'undefined' && typeof hdl[0].valueQuantity.unit != 'undefined') {
+          p.hdl = hdl[0].valueQuantity.value + ' ' + hdl[0].valueQuantity.unit;
+        }
+
+        if(typeof ldl[0] != 'undefined' && typeof ldl[0].valueQuantity.value != 'undefined' && typeof ldl[0].valueQuantity.unit != 'undefined') {
+          p.ldl = ldl[0].valueQuantity.value + ' ' + ldl[0].valueQuantity.unit;
+        }
+
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
           }
-          
+
           if (typeof diastolicbp != 'undefined') {
             p.diastolicbp = diastolicbp;
           }
@@ -138,9 +149,6 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
-    $('#trig').html(p.trig);
-    $('#chol').html(p.chol);
-    $('#hemog').html(p.hemog);
   };
 
 })(window);
