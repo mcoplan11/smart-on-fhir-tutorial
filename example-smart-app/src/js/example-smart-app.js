@@ -53,7 +53,7 @@
           p.fname = fname;
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
-          
+          p.trig = getQuantityValueAndUnit(trig[0]);
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
           p.chol = getQuantityValueAndUnit(chol[0]);
@@ -61,9 +61,6 @@
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
-          }
-          if (typeof trig != 'undefined')  {
-            p.trig = trig;
           }
           if (typeof diastolicbp != 'undefined') {
             p.diastolicbp = diastolicbp;
