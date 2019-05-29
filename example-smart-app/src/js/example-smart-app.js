@@ -56,8 +56,11 @@
           p.trig = getQuantityValueAndUnit(trig);
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
-          p.chol = getQuantityValueAndUnit(chol[0]);
           p.hemog = getQuantityValueAndUnit(hemog[0]);
+    
+          if (typeof chol != 'undefined')  {
+            p.chol = chol;
+          }
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
