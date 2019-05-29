@@ -19,7 +19,7 @@
                               'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
                               'http://loinc.org|2089-1', 'http://loinc.org|55284-4', 
                               'http://loinc.org|3043-7', 
-                              'http://loinc.org|58293-2', 'http://loinc.org|86910-7']
+                              'http://loinc.org|86911-5', 'http://loinc.org|86910-7']
                       }
                     }
                   });
@@ -43,32 +43,21 @@
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
+          var trig = byCodes('3043-7');
+          var chol = byCodes('86911-5');
+          var hemog = byCodes('86910-7');
 
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
           p.gender = gender;
           p.fname = fname;
           p.lname = lname;
-          
-          if(typeof height[0] != 'undefined' && typeof height[0].valueQuantity.value != 'undefined' && typeof height[0].valueQuantity.unit != 'undefined') {
-          p.height = height[0].valueQuantity.value + ' ' + height[0].valueQuantity.unit;
-        }
-
-        if(typeof systolicbp != 'undefined')  {
-          p.systolicbp = systolicbp;
-        }
-
-        if(typeof diastolicbp != 'undefined') {
-          p.diastolicbp = diastolicbp;
-        }
-
-        if(typeof hdl[0] != 'undefined' && typeof hdl[0].valueQuantity.value != 'undefined' && typeof hdl[0].valueQuantity.unit != 'undefined') {
-          p.hdl = hdl[0].valueQuantity.value + ' ' + hdl[0].valueQuantity.unit;
-        }
-
-        if(typeof ldl[0] != 'undefined' && typeof ldl[0].valueQuantity.value != 'undefined' && typeof ldl[0].valueQuantity.unit != 'undefined') {
-          p.ldl = ldl[0].valueQuantity.value + ' ' + ldl[0].valueQuantity.unit;
-        }
+          p.height = getQuantityValueAndUnit(height[0]);
+          p.trig = getQuantityValueAndUnit(trig);
+          p.hdl = getQuantityValueAndUnit(hdl[0]);
+          p.ldl = getQuantityValueAndUnit(ldl[0]);
+          p.chol = getQuantityValueAndUnit(chol[0]);
+          p.hemog = getQuantityValueAndUnit(hemog[0]);
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
@@ -77,9 +66,6 @@
           if (typeof diastolicbp != 'undefined') {
             p.diastolicbp = diastolicbp;
           }
-
-          
-
           ret.resolve(p);
         });
       } else {
@@ -132,7 +118,8 @@
         typeof ob.valueQuantity.value != 'undefined' &&
         typeof ob.valueQuantity.unit != 'undefined') {
           return ob.valueQuantity.value + ' ' + ob.valueQuantity.unit;
-    } else {
+    } 
+    else {
       return undefined;
     }
   }
@@ -149,6 +136,9 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
+    $('#trig').html(p.trig);
+    $('#chol').html(p.chol);
+    $('#hemog').html(p.hemog);
   };
 
 })(window);
